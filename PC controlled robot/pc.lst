@@ -1,0 +1,154 @@
+   1               		.file	"pc.c"
+   2               	__SREG__ = 0x3f
+   3               	__SP_H__ = 0x3e
+   4               	__SP_L__ = 0x3d
+   5               	__CCP__  = 0x34
+   6               	__tmp_reg__ = 0
+   7               	__zero_reg__ = 1
+  15               	.Ltext0:
+  16               	.global	uart_init
+  18               	uart_init:
+  19               	.LFB6:
+  20               	.LM1:
+  21               	/* prologue: function */
+  22               	/* frame size = 0 */
+  23               	.LM2:
+  24 0000 10BC      		out 64-32,__zero_reg__
+  25               	.LM3:
+  26 0002 8CE0      		ldi r24,lo8(12)
+  27 0004 89B9      		out 41-32,r24
+  28               	.LM4:
+  29 0006 549A      		sbi 42-32,4
+  30               	/* epilogue start */
+  31               	.LM5:
+  32 0008 0895      		ret
+  33               	.LFE6:
+  35               	.global	uart_recieve
+  37               	uart_recieve:
+  38               	.LFB7:
+  39               	.LM6:
+  40               	/* prologue: function */
+  41               	/* frame size = 0 */
+  42               	.L4:
+  43               	.LM7:
+  44 000a 5F9B      		sbis 43-32,7
+  45 000c 00C0      		rjmp .L4
+  46               	.LM8:
+  47 000e 8CB1      		in r24,44-32
+  48               	.LM9:
+  49 0010 90E0      		ldi r25,lo8(0)
+  50               	/* epilogue start */
+  51 0012 0895      		ret
+  52               	.LFE7:
+  54               	.global	main
+  56               	main:
+  57               	.LFB8:
+  58               	.LM10:
+  59               	/* prologue: function */
+  60               	/* frame size = 0 */
+  61               	.LM11:
+  62 0014 8FEF      		ldi r24,lo8(-1)
+  63 0016 87BB      		out 55-32,r24
+  64               	.LBB16:
+  65               	.LBB17:
+  66               	.LM12:
+  67 0018 10BC      		out 64-32,__zero_reg__
+  68               	.LM13:
+  69 001a 8CE0      		ldi r24,lo8(12)
+  70 001c 89B9      		out 41-32,r24
+  71               	.LM14:
+  72 001e 549A      		sbi 42-32,4
+  73               	.LBE17:
+  74               	.LBE16:
+  75               	.LBB18:
+  76               	.LBB19:
+  77               	.LBB20:
+  78               	.LBB21:
+  79               	.LM15:
+  80 0020 84ED      		ldi r24,lo8(12500)
+  81 0022 90E3      		ldi r25,hi8(12500)
+  82               	.LVL0:
+  83               	/* #APP */
+  84               	 ;  105 "c:/winavr-20100110/lib/gcc/../../avr/include/util/delay_basic.h" 1
+  85 0024 0197      		1: sbiw r24,1
+  86 0026 01F4      		brne 1b
+  87               	 ;  0 "" 2
+  88               	/* #NOAPP */
+  89               	.LBE21:
+  90               	.LBE20:
+  91               	.LBE19:
+  92               	.LBE18:
+  93               	.LM16:
+  94 0028 50E2      		ldi r21,lo8(32)
+  95               	.LM17:
+  96 002a 49E0      		ldi r20,lo8(9)
+  97               	.LM18:
+  98 002c 36E0      		ldi r19,lo8(6)
+  99               	.LM19:
+ 100 002e 25E0      		ldi r18,lo8(5)
+ 101               	.LM20:
+ 102 0030 9AE0      		ldi r25,lo8(10)
+ 103               	.L17:
+ 104               	.LBB22:
+ 105               	.LBB23:
+ 106               	.LM21:
+ 107 0032 5F9B      		sbis 43-32,7
+ 108 0034 00C0      		rjmp .L17
+ 109               	.LM22:
+ 110 0036 8CB1      		in r24,44-32
+ 111               	.LVL1:
+ 112               	.LBE23:
+ 113               	.LBE22:
+ 114               	.LM23:
+ 115 0038 8634      		cpi r24,lo8(70)
+ 116 003a 01F4      		brne .L9
+ 117               	.LM24:
+ 118 003c 98BB      		out 56-32,r25
+ 119 003e 00C0      		rjmp .L17
+ 120               	.L9:
+ 121               	.LM25:
+ 122 0040 8234      		cpi r24,lo8(66)
+ 123 0042 01F4      		brne .L10
+ 124               	.LM26:
+ 125 0044 28BB      		out 56-32,r18
+ 126 0046 00C0      		rjmp .L17
+ 127               	.L10:
+ 128               	.LM27:
+ 129 0048 8C34      		cpi r24,lo8(76)
+ 130 004a 01F4      		brne .L11
+ 131               	.LM28:
+ 132 004c 38BB      		out 56-32,r19
+ 133 004e 00C0      		rjmp .L17
+ 134               	.L11:
+ 135               	.LM29:
+ 136 0050 8235      		cpi r24,lo8(82)
+ 137 0052 01F4      		brne .L12
+ 138               	.LM30:
+ 139 0054 48BB      		out 56-32,r20
+ 140 0056 00C0      		rjmp .L17
+ 141               	.L12:
+ 142               	.LM31:
+ 143 0058 8635      		cpi r24,lo8(86)
+ 144 005a 01F4      		brne .L13
+ 145               	.LM32:
+ 146 005c 58BB      		out 56-32,r21
+ 147 005e 00C0      		rjmp .L17
+ 148               	.L13:
+ 149               	.LM33:
+ 150 0060 18BA      		out 56-32,__zero_reg__
+ 151 0062 00C0      		rjmp .L17
+ 152               	.LFE8:
+ 194               	.Letext0:
+DEFINED SYMBOLS
+                            *ABS*:00000000 pc.c
+C:\Users\USER\AppData\Local\Temp/ccYtaDzb.s:2      *ABS*:0000003f __SREG__
+C:\Users\USER\AppData\Local\Temp/ccYtaDzb.s:3      *ABS*:0000003e __SP_H__
+C:\Users\USER\AppData\Local\Temp/ccYtaDzb.s:4      *ABS*:0000003d __SP_L__
+C:\Users\USER\AppData\Local\Temp/ccYtaDzb.s:5      *ABS*:00000034 __CCP__
+C:\Users\USER\AppData\Local\Temp/ccYtaDzb.s:6      *ABS*:00000000 __tmp_reg__
+C:\Users\USER\AppData\Local\Temp/ccYtaDzb.s:7      *ABS*:00000001 __zero_reg__
+C:\Users\USER\AppData\Local\Temp/ccYtaDzb.s:18     .text:00000000 uart_init
+C:\Users\USER\AppData\Local\Temp/ccYtaDzb.s:37     .text:0000000a uart_recieve
+C:\Users\USER\AppData\Local\Temp/ccYtaDzb.s:56     .text:00000014 main
+
+NO UNDEFINED SYMBOLS

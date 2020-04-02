@@ -1,0 +1,45 @@
+   1               		.file	"line.c"
+   2               	__SREG__ = 0x3f
+   3               	__SP_H__ = 0x3e
+   4               	__SP_L__ = 0x3d
+   5               	__CCP__  = 0x34
+   6               	__tmp_reg__ = 0
+   7               	__zero_reg__ = 1
+  15               	.Ltext0:
+  16               	.global	main
+  18               	main:
+  19               	.LFB6:
+  20               	.LM1:
+  21               	/* prologue: function */
+  22               	/* frame size = 0 */
+  23               	.LM2:
+  24 0000 17BA      		out 55-32,__zero_reg__
+  25               	.LM3:
+  26 0002 8FEF      		ldi r24,lo8(-1)
+  27 0004 81BB      		out 49-32,r24
+  28               	.LM4:
+  29 0006 88BB      		out 56-32,r24
+  30               	.LM5:
+  31 0008 90E8      		ldi r25,lo8(-128)
+  32               	.L6:
+  33               	.LM6:
+  34 000a 86B3      		in r24,54-32
+  35               	.LM7:
+  36 000c 8F3F      		cpi r24,lo8(-1)
+  37 000e 01F4      		brne .L6
+  38               	.LM8:
+  39 0010 92BB      		out 50-32,r25
+  40 0012 00C0      		rjmp .L6
+  41               	.LFE6:
+  67               	.Letext0:
+DEFINED SYMBOLS
+                            *ABS*:00000000 line.c
+C:\Users\USER\AppData\Local\Temp/cc0NzOBO.s:2      *ABS*:0000003f __SREG__
+C:\Users\USER\AppData\Local\Temp/cc0NzOBO.s:3      *ABS*:0000003e __SP_H__
+C:\Users\USER\AppData\Local\Temp/cc0NzOBO.s:4      *ABS*:0000003d __SP_L__
+C:\Users\USER\AppData\Local\Temp/cc0NzOBO.s:5      *ABS*:00000034 __CCP__
+C:\Users\USER\AppData\Local\Temp/cc0NzOBO.s:6      *ABS*:00000000 __tmp_reg__
+C:\Users\USER\AppData\Local\Temp/cc0NzOBO.s:7      *ABS*:00000001 __zero_reg__
+C:\Users\USER\AppData\Local\Temp/cc0NzOBO.s:18     .text:00000000 main
+
+NO UNDEFINED SYMBOLS
